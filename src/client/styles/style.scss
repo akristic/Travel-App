@@ -1,0 +1,131 @@
+:root{
+    --color-main-dark: #0099FF;
+    --color-main-light: #93D3FF;
+    --color-accent-dark: #02CD02;
+    --color-text-dark: #161515;
+    --color-text-medium: #696868;
+    --color-text-light: #FFFFF8;
+  }
+body{
+    font-family: "Roboto", sans-serif;
+}
+p {
+  font-size: small;
+}
+a {
+  font-weight: bolder;
+  color: var(--color-main-dark);
+  text-decoration: none;
+}
+a:hover{
+  color: var(--color-text-dark);
+  text-decoration: underline;
+}
+button{
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 24px;
+    padding-right: 24px;
+    color: var(--color-text-light);
+    border-radius: 5px;
+    background-color: var(--color-main-dark);   
+    }
+.accent{
+    color: var(--color-text-light);
+    background-color: var(--color-accent-dark);
+    border-radius: 5px; 
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+.page{
+  color: var(--color-main-dark);
+  background-color: var(--color-text-light);
+  font-size: small;
+  font-weight: bold;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.page:hover{
+  color: var(--color-text-light);
+  background-color: var(--color-main-dark);
+  cursor: pointer;
+}
+  
+
+  .chip {
+    display: inline-block;
+    height: 50px;
+    font-size: 14px;
+    line-height: 50px;
+    padding-top: 50px;
+    color: white;
+    font-size: 12px;
+    border-radius: 25px;
+  }
+  
+  .chip img {
+    float: left;
+    margin: -50px -50px 0px 0px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    
+    border: 2px solid white;
+  }
+  .chipCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    font-size: 14px;
+    line-height: 25px;
+    color: gray;
+    font-size: 12px;
+  }
+  
+  .chipCard img {
+    display: flex;
+    flex-direction: row;
+    margin: -25px 0px 0px 0px;
+    height: 50px;
+    width: 50px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    
+    border: 2px solid white;
+  }
+
+  #lighttext{
+      color: var(--color-text-light);
+  }
+  #mediumLightText{
+    color: var(--color-text-medium);
+    font-size: 12px;
+    line-height: 20px;
+  }
+  
+  #addpadding{
+    padding: 10px;
+    margin: 0px;
+  }
+  input[type=email] {
+    width: 300px;
+    background-color: whitesmoke;
+    background-image: url('../media/arrow.png');
+    background-position: 250px 0px;
+    background-repeat: no-repeat;
+    padding-left: 20px;
+    height: 50px;
+    margin-left: 30px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box
+  }
+

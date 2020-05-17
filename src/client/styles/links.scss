@@ -1,0 +1,24 @@
+.links{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 12px;
+    min-width: 500px;
+    justify-content: space-evenly;
+    margin-bottom: 30px;
+  }
+  .links-item{
+    display: flex;
+    flex-direction: column;
+    min-width: 110px;
+    color: var(--color-text-medium);
+    line-height: 20px;
+    align-items: flex-start;
+    justify-items: flex-start;
+    padding: 12px;
+  }
+  .links-item > a{
+    color: var(--color-text-medium);
+    font-size: 12px;
+    line-height: 20px;
+  }

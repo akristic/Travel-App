@@ -1,0 +1,206 @@
+.container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: minmax(300px, auto) minmax(400px, auto) minmax(600px, auto);
+    grid-template-areas:
+    "main-header"
+    "main-content"
+    "main-footer"
+}
+#main-header{
+    grid-area: main-header;
+}
+#main-content{
+    grid-area: main-content;
+}
+#main-footer{
+    grid-area: main-footer;
+}
+.container-header{
+    display: grid;
+    width: 95%;
+    margin: auto;
+    grid-template-columns: 1vw 28vw 28vw 28vw 10vw;
+    grid-template-rows: minmax(70px, auto) minmax(50px, auto) minmax(180px, auto);
+    grid-template-areas: 
+    "leftHeader header header header rightHeader" 
+    "leftN nav nav nav rightN"
+    "leftT top top top rightT";
+  }
+  .container-content{
+    display: grid;
+    width: 95%;
+    margin: auto;
+    grid-template-columns: 1vw 85vw 10vw;
+    grid-template-rows: minmax(400px, auto);
+    grid-template-areas: 
+    "leftC content rightC";
+  }
+  .container-footer{
+    display: grid;
+    width: 95%;
+    margin: auto;
+    grid-template-columns: 1vw 28vw 28vw 28vw 10vw;
+    grid-template-rows: 10vh minmax(200px, auto) minmax(300px, auto) 5vh;
+    grid-template-areas: 
+    "leftP page page page rightP"
+    "leftS sub sub sub rightS"
+    "leftB bottom bottom bottom rightB"
+    "copy copy copy copy copy";
+  }
+
+
+  /* Site menu*/
+  #logo{
+    grid-area: leftHeader;
+  }
+  .logo{
+    display: none;
+  }
+  #submit{
+    grid-area: rightHeader;
+  }
+  .submit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+  }
+  #menu{
+    grid-area: header;
+  }
+  .menu{
+    display: flex;
+    flex-direction: row;
+    padding-left: 12px;
+    justify-content: flex-start;
+    align-items: center;
+    ;
+  }
+  #menu_item{
+    padding-top:12px;
+    padding-left: 0px;
+    padding-right: 24px;
+    padding-bottom: 12px;
+  }
+  /* site navigation box*/
+  #nav{
+    grid-area: nav;
+  }
+  .nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    color: var(--color-text-medium);
+    font-size: small;
+    font-weight: bold;
+  }
+  /* Feature box*/
+  #feature{
+    grid-area: top;
+
+  }
+  .feature{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: var(--color-main-dark);
+    border-radius: 12px;
+    padding-left: 40px;
+    padding-top: 40px;
+    background-repeat: no-repeat;
+    background-position: left;
+    margin-bottom: 30px;
+  }
+    /*main blog container*/
+  #content{
+    grid-area: content;   
+  } 
+  /*main card container*/
+
+  #page{
+    grid-area: page;
+  }
+  .pagination{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  #sub{
+    grid-area: sub;
+  }
+  .subscribe{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: whitesmoke;
+    padding: 40px;
+    min-width: 500px;
+    font-size: 25px;
+    background-color: var(--color-main-dark);
+    border-radius: 12px;
+  }
+  #bottom{
+    grid-area: bottom;
+  }
+  #copy{
+    grid-area: copy;
+  }
+  .copyright{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: var(--color-text-medium);
+  }
+
+  /* larger Screens */
+@media (min-width: 1000px){
+  .container-header{
+    display: grid;
+    width: 95%;
+    margin: auto;
+    grid-template-columns: 10vw 25vw 25vw 25vw 10vw;
+    grid-template-rows: minmax(70px, auto) minmax(50px, auto) minmax(180px, auto);
+    grid-template-areas: 
+    "leftHeader header header header rightHeader" 
+    "leftN nav nav nav rightN"
+    "leftT top top top rightT";
+  }
+  .container-content{
+    display: grid;
+    width: 95%;
+    margin: auto;
+    grid-template-columns: 10vw 75vw 10vw;
+    grid-template-rows: minmax(400px, auto);
+    grid-template-areas: 
+    "leftC content rightC";
+  }
+  .container-footer{
+    display: grid;
+    width: 95%;
+    margin: auto;
+    grid-template-columns: 10vw 25vw 25vw 25vw 10vw;
+    grid-template-rows: 10vh minmax(200px, auto) minmax(300px, auto) 5vh;
+    grid-template-areas: 
+    "leftP page page page rightP"
+    "leftS sub sub sub rightS"
+    "leftB bottom bottom bottom rightB"
+    "copy copy copy copy copy";
+  }
+  .logo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+  

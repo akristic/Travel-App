@@ -14,3 +14,7 @@
  - npm install optimize-css-assets-webpack-plugin
  - npm install dotenv
  - npm install webpack-dev-server --save-dev
+ - npm install style-loader
+ - npm install sass-loader
+ - npm install css-loader
+ - npm install -D babel-loader @babel/core @babel/preset-env webpack
