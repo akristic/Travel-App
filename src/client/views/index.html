@@ -15,33 +15,52 @@
           </div>
           <div id="menu" class="menu">
             <div id="menu_item"><a href="./index.html">Home</a></div>
-            <div id="menu_item"><a href="#">How it works</a></div>
-            <div id="menu_item"><a href="#">Team</a></div>
-            <div id="menu_item"><a href="#">FAQ</a></div>
-            <div id="menu_item"><a href="#">Documents</a></div>
-          </div>
-          <div id="submit" class="submit">
-            <button>Sign In</button>
+            <div id="menu_item"><a href="#">My Trips</a></div>
+            <div id="menu_item"><a href="#">Add lodgin info</a></div>
+            <div id="menu_item"><a href="#">Add packing list</a></div>
+            <div id="menu_item"><a href="#">Add notes</a></div>
           </div>
           <!--navigation-->
           <div id="nav" class="nav">
-            <div id="menu_item">Overview</div>
+            <div id="menu_item">Travel Planer</div>
             <div id="menu_item">&#62</div>
-            <div id="menu_item">Blog</div>
+            <div id="menu_item">Tripp</div>
           </div>
           <!--feature-->
           <div id="feature" class="feature">
-            <div class="accent">Feature</div>
             <h1 id="lighttext">Travel with a smile</h1>
-            <div class="chip">
-              <img src="../media/avatar001.jpg" alt="Person" width="96" height="96">
-              John Doe
-          </div>
+            <form>
+                <div class="multi-line">
+                <div class="multi-line">
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="trip-destination" placeholder="Enter your destination here">
+                </div>
+                <div class="multi-line">
+                    <label for="start">Start date:</label>
+                    <input type="date" id="start" name="trip-start">
+                </div>
+                <div class="multi-line">
+                    <label for="end">End date:</label>
+                    <input type="date" id="end" name="trip-end">
+                </div>
+                </div>
+            </form> 
+            <button id="add-tripp" class="button">Add trip</div>
         </div>
       </header>
       <main id="main-content">
-
-           
+        <div class="container-content">
+            <div id="content" class="cardbox">
+                <div class="chip">
+                    <img src="../media/avatar001.jpg" alt="Person" width="96" height="96">
+                    John Doe
+                </div>
+                <h3 id="destination">Paris, France is 220 days away</h3>
+                <h4>Typical weather for then is:</h4>
+                <p>High -46, Low -35</p>
+                <p>Mostly cloudy throughout the day</p>
+            </div>
+        </div>   
       </main>
     
     <footer class="container-footer">
@@ -64,7 +83,7 @@
           <img src="../media/logo_plane.jpg" alt="Travel app logo" widht="50px" height="50px">
           <p id="mediumLightText">Travel App web site is developed for purpose of creating Capestone project
             for Udacity online course Front End Development. In order to pass the project 
-            site must have meet strict requirements</q></p>
+            site must meet strict requirements</q></p>
         </div>
         <div class="links-item">
           <h5>Useful Link</h5>
@@ -86,7 +105,7 @@
           <p id="mediumLightText">Travel App Ltd, 126 Ilica Street, 10000 Zagreb, HR</p>
         </div>
       </div>
-      <div id="copy" class="copyright">© 2020 Travel App. All Rights Reserved.</div>
+        <div id="copy" class="copyright">© 2020 Travel App. All Rights Reserved.</div>
       </div>   
     </footer>
   </body>

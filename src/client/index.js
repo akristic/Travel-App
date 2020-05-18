@@ -1,3 +1,4 @@
+import { preformAddTripp } from './js/geoNames'
 import './styles/containers.scss'
 import './styles/links.scss'
 import './styles/style.scss'

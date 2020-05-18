@@ -21,24 +21,49 @@ a:hover{
   color: var(--color-text-dark);
   text-decoration: underline;
 }
-button{
-    padding-top: 12px;
-    padding-bottom: 12px;
-    padding-left: 24px;
-    padding-right: 24px;
-    color: var(--color-text-light);
-    border-radius: 5px;
-    background-color: var(--color-main-dark);   
-    }
-.accent{
-    color: var(--color-text-light);
-    background-color: var(--color-accent-dark);
-    border-radius: 5px; 
-    padding-top: 6px;
-    padding-bottom: 6px;
-    padding-left: 24px;
-    padding-right: 24px;
-  }
+
+.button {
+  position: relative;
+  background-color: var(--color-accent-dark);
+  border: 0px;
+  border-radius: 5px;
+  font-size: 20px;
+  color: #FFFFFF;
+  padding: 20px;
+  margin: 20px;
+  margin-left: 30px;
+  width: 150px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.button:after {
+  content: "";
+  background: #90EE90;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px!important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+.button:active {
+  background-color: var(--color-main-light);
+  transform: translateY(4px);
+}
 .page{
   color: var(--color-main-dark);
   background-color: var(--color-text-light);
@@ -114,18 +139,16 @@ button{
     padding: 10px;
     margin: 0px;
   }
-  input[type=email] {
+  input {
     width: 300px;
     background-color: whitesmoke;
-    background-image: url('../media/arrow.png');
-    background-position: 250px 0px;
-    background-repeat: no-repeat;
     padding-left: 20px;
     height: 50px;
-    margin-left: 30px;
+    margin: 10px;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box
   }
+  
 

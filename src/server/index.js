@@ -1,3 +1,6 @@
+// Setup empty JS object to act as endpoint for all routes
+projectData = [];
+
 const dotenv = require('dotenv');
 dotenv.config();
 var path = require('path');
@@ -26,4 +29,21 @@ function listening(){
 app.get('/', function (req, res) {
   // res.sendFile('dist/index.html')
   res.sendFile('dist/index.html')
+})
+app.get('/all', function(req, res){
+  res.send(projectData);
+})
+app.post('/tripp/add', function (req, res){
+  try{
+      const data = {
+        city: req.body.city, 
+        geoData: req.body.geoData,
+        start: req.body.start,
+        end: req.body.end
+      }
+      projectData.push(data)
+      console.log(data)
+  }catch (error){
+      console.log("Error: ", error)
+  }  
 })
