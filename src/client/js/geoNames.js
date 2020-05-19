@@ -1,15 +1,7 @@
 /* Global Variables */
 const baseUrl = "http://api.geonames.org/postalCodeLookupJSON?"
 const apiUserName = "antekristic"
-let city = "Dubrovnik" //default
-// Create a new date instance dynamically with JS
-let d = new Date();
-let newDate = (d.getMonth() + 1) + '.'+ d.getDate()+'.'+ d.getFullYear();
 
-//Helper functions
-function getGeoNameUrl(){
-    return baseUrl + "placename=" + city + "&username=" + apiUserName;
-}
 //manage date inputs
 const today = new Date()
 const startDateInput = document.getElementById('start')
@@ -19,6 +11,10 @@ const endDateInput = document.getElementById('end')
 endDateInput.value = today.toISOString().split("T")[0];
 endDateInput.min = today.toISOString().split("T")[0];
 
+//Helper functions
+function getGeoNameUrl(city){
+  return baseUrl + "placename=" + city + "&username=" + apiUserName;
+}
 function getCounterDays(){
   const startDate = new Date(startDateInput.value)
   const time = startDate.getTime() - today.getTime();
@@ -44,34 +40,27 @@ const getGeonNameData = async ( url = '')=>{
       }
   }
  
-const postData = async ( url = '', data = {})=>{
-    const response = await fetch(url, {
-    method: 'POST', 
-    credentials: 'same-origin',
-    headers: {
-        'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data) 
-  });
-    try {
-      const newData = await response.json();
-      return newData;
-    }catch(error) {
-      console.log("error", error);
-    }
-}
+
 // main functions
   function preformAddTripp(){
-    city = document.getElementById('city').value;
+    const city = document.getElementById('city').value;
     city.trim()
     if(city !== ""){
-        getGeonNameData(getGeoNameUrl())
+        getGeonNameData(getGeoNameUrl(city))
         .then(function(data){
-            postData('http://localhost:8000/tripp/add', {
+            Client.postDataToServer('http://localhost:8000/tripp/add', {
               city: city, 
               geoData: data, 
               start: startDateInput.value, 
               end: endDateInput.value})
+              //start fetching weather from weatherbit
+              if(data.postalcodes[0] != null){
+                Client.getWeatherInLocation(data.postalcodes[0].lat, data.postalcodes[0].lng)
+              }else{
+                console.log("Error, There is no data for this destination. Check your City input.")
+              }
+              //start fetching images from pixabay
+              Client.getPixabayForLocation(city)                           
         })
         .then(function(){
             updateUI();
