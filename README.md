@@ -21,7 +21,23 @@
  - @babel/core 
  - @babel/preset-env
 
- To install dependencies run
+To install dependencies run:
  ```
- npm intall
+ npm install
  ```
+To start the webpack dev server run:
+ ```
+ npm run build-dev
+ ``` 
+To generate a dist folder for prod run:
+ ```
+ npm run build-prod
+ ``` 
+To run the Express server on port 8000 run:
+ ```
+ npm start
+ ``` 
+To run tests run:
+```
+npm run test
+```
