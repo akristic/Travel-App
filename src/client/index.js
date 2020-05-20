@@ -1,4 +1,5 @@
 import { preformAddTripp } from './js/geoNames'
+import { getCounterDays, getTrippDuration } from './js/helper'
 import { postDataToServer } from './js/utility'
 import { getWeatherInLocation } from './js/weatherBit'
 import { getPixabayForLocation } from './js/pixabay'
@@ -17,5 +18,7 @@ export {
     preformAddTripp,
     postDataToServer,
     getWeatherInLocation,
-    getPixabayForLocation
+    getPixabayForLocation,
+    getCounterDays,
+    getTrippDuration
 }

@@ -1,5 +1,5 @@
 // Setup empty JS object to act as endpoint for all routes
-projectData = [];
+let projectData = [];
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -19,7 +19,14 @@ app.use(cors());
 console.log(__dirname)
 // Setup Server
 const port = 8000;
-const server = app.listen(port, listening);
+// for jest and supertest we want to allow each test file to start a server on their own. 
+// To do this we need to export app without listening to it
+if(process.env.NODE_ENV === 'test'){
+  console.log('Test server is running');
+}else{
+  const server = app.listen(port, listening);
+}
+
 
 function listening(){
     console.log('server running');
@@ -37,13 +44,19 @@ app.post('/tripp/add', function (req, res){
   try{
       const data = {
         city: req.body.city, 
-        geoData: req.body.geoData,
+        lat: req.body.lat,
+        lng: req.body.lng,
         start: req.body.start,
         end: req.body.end
       }
       projectData.push(data)
-      console.log(data)
+      res.send({message: "OK"})
   }catch (error){
       console.log("Error: ", error)
   }  
 })
+app.get('/test', async (req, res) => {
+  res.json({message: 'pass!'})
+})
+
+module.exports = app

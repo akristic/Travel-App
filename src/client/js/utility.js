@@ -1,4 +1,4 @@
-const postData = async ( url = '', data = {})=>{
+const postDataToServer = async ( url = '', data = {})=>{
     const response = await fetch(url, {
     method: 'POST', 
     credentials: 'same-origin',
@@ -13,10 +13,6 @@ const postData = async ( url = '', data = {})=>{
     }catch(error) {
       console.log("error", error);
     }
-}
-
-function postDataToServer(url, data){
-   return postData(url, data);
 }
 
 export { postDataToServer }

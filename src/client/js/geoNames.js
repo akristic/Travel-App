@@ -15,21 +15,9 @@ endDateInput.min = today.toISOString().split("T")[0];
 function getGeoNameUrl(city){
   return baseUrl + "placename=" + city + "&username=" + apiUserName;
 }
-function getCounterDays(){
-  const startDate = new Date(startDateInput.value)
-  const time = startDate.getTime() - today.getTime();
-  const days = time / (1000 * 3600 * 24);
-  return (days+1).toFixed(0);
-}
-function getTrippDuration(){
-  const endDate = new Date(endDateInput.value)
-  const startDate = new Date(startDateInput.value)
-  const time = endDate.getTime() - startDate.getTime();
-  const days = time / (1000 * 3600 * 24);
-  return (days+1).toFixed(0);
-}
+
 // get and post tasks
-const getGeonNameData = async ( url = '')=>{
+const getGeoNameData = async ( url = '')=>{
       const response = await fetch(url);
       try {
         const newData = await response.json();
@@ -39,34 +27,36 @@ const getGeonNameData = async ( url = '')=>{
       console.log("error", error);
       }
   }
- 
 
 // main functions
   function preformAddTripp(){
     const city = document.getElementById('city').value;
     city.trim()
     if(city !== ""){
-        getGeonNameData(getGeoNameUrl(city))
+        getGeoNameData(getGeoNameUrl(city))
         .then(function(data){
+          if(data.postalcodes.length > 0){
+            document.getElementById('city-label').innerHTML="City:"
+            //save data to server
             Client.postDataToServer('http://localhost:8000/tripp/add', {
               city: city, 
-              geoData: data, 
+              lat: data.postalcodes[0].lat, 
+              lng: data.postalcodes[0].lng, 
               start: startDateInput.value, 
               end: endDateInput.value})
-              //start fetching weather from weatherbit
-              if(data.postalcodes[0] != null){
-                Client.getWeatherInLocation(data.postalcodes[0].lat, data.postalcodes[0].lng)
-              }else{
-                console.log("Error, There is no data for this destination. Check your City input.")
-              }
-              //start fetching images from pixabay
-              Client.getPixabayForLocation(city)                           
+            //start fetching weather from weatherbit
+            Client.getWeatherInLocation(data.postalcodes[0].lat, data.postalcodes[0].lng)
+            //start fetching images from pixabay
+            Client.getPixabayForLocation(city)   
+          }else{
+            document.getElementById('city-label').innerHTML= "Error, There is no data for this destination. Check your City input."
+          }                                     
         })
         .then(function(){
-            updateUI();
+             updateUI();
         });
     }else{
-        console.log("Did you forget to add your destination?")
+      document.getElementById('city-label').innerHTML= "Did you forget to add your destination?"
     }    
   }
 
@@ -75,10 +65,13 @@ const getGeonNameData = async ( url = '')=>{
     try{
       const allData = await request.json();
       const lastIndex = allData.length - 1;
-      const lat = allData[lastIndex].geoData.postalcodes[0].lat;
-      const lng = allData[lastIndex].geoData.postalcodes[0].lng;
-      const text = `${allData[lastIndex].geoData.postalcodes[0].adminName1} is 
-      ${getCounterDays()} days away. Tripp duration: ${getTrippDuration()} days.`
+      const lat = allData[lastIndex].lat;
+      const lng = allData[lastIndex].lng;
+      const start = allData[lastIndex].start;
+      const end = allData[lastIndex].end;
+      const text = `${allData[lastIndex].city} is 
+      ${Client.getCounterDays(new Date(start))} days away. 
+      Tripp duration: ${Client.getTrippDuration(new Date(start), new Date(end))} days.`
       document.getElementById('destination').innerHTML = text;
      }catch(error){
       console.log("error", error);
@@ -94,4 +87,7 @@ startDateInput.addEventListener('change', function(){
   endDateInput.value = new Date(startDateInput.value).toISOString().split("T")[0];
   endDateInput.min = new Date(startDateInput.value).toISOString().split("T")[0];
 });
-export { preformAddTripp }
+
+export { 
+  preformAddTripp
+}

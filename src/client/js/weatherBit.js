@@ -1,6 +1,7 @@
 const baseUrlWeather = "https://api.weatherbit.io/v2.0/forecast/daily?"
 const API_KEY = "51c0e907fbf74ac9bded371467945987";
 const DAY_OF_WEEK = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Satruday']
+
 //Helper functions
 function getWeatherBitUrl(lat, lon){
     return `${baseUrlWeather}&lat=${lat}&lon=${lon}&key=${API_KEY}`
