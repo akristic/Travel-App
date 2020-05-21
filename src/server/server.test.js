@@ -1,5 +1,5 @@
 import "regenerator-runtime/runtime";
-import app from './index'; // Link to your server file
+import app from './index';
 import supertest from 'supertest';
 const request = supertest(app)
 

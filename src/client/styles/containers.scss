@@ -174,7 +174,13 @@
   align-items: center;
   justify-content: space-evenly;
 }
-
+.weather{
+  display: flex;
+  flex-direction: row;
+  max-width: 500px;
+  align-items: center;
+  justify-content: space-evenly;
+}
   /* larger Screens */
 @media (min-width: 1000px){
   .container-header{

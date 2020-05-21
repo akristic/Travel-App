@@ -12,7 +12,7 @@ import html from './views/index.html';
 
 import logoPlane from './media/logo_plane.jpg';
 import logoSmall from './media/logo_xsmall.jpg';
-import avatar from './media/avatar001.jpg';
+
 
 export {
     preformAddTripp,

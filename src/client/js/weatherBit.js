@@ -37,12 +37,23 @@ function concateDayAndWeather(data){
         d.setDate(d.getDate()+i);
         const newDate = (d.getMonth() + 1) + '.'+ d.getDate()+'.'+ d.getFullYear() + " " + DAY_OF_WEEK[d.getDay()];
         const weather = data.data[i].weather.description;
-        text = `${text}
-         <h5>${newDate} --> ${weather}</h5>
-         `
+        const icon = data.data[i].weather.icon;
+        const max = data.data[i].max_temp;
+        const min= data.data[i].min_temp;
+        text = `${text}  
+        <h5>${newDate}</h5>      
+        <div class="weather">
+            <h6>${weather}</h6>
+            <img src="src/client/media/icons/${icon}.png" widht="50px" height="50px">
+            <div class="multi-line">
+                <p>Max Temp: ${max} &#8451;</p>
+                <p>Min Temp: ${min} &#8451;</p>
+            </div>
+        </div> 
+        <hr>       
+        `
     }
     return text;
 }
-
 export { getWeatherInLocation }
 
